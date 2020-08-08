@@ -6,6 +6,24 @@ The SGX certificate extensions and attestation checks have been reimplemented by
 Note that not all features have been ported yet.
 The SENG Go-Server currently uses the `ECDHE-ECDSA-AES128-GCM-SHA256` cipher suite and is compatible with the SENG Runtime and the SENG SDK (with ECDSA enabled).
 
+## Research Paper
+This repository belongs to a research project by [Fabian Schwarz](https://github.com/fa-schwarz) and Christian Rossow from the CISPA Helmholtz Center for Information Security.
+The corresponding [research paper](https://publications.cispa.saarland/3119/1/seng-sec20.pdf) `"SENG, the SGX-Enforcing Network Gateway: Authorizing Communication from Shielded Clients"` will be published as part of the 29th USENIX Security Symposium (USENIX Security 20).
+If you use SENG in a project, please cite using one of the formats provided by the export function of the [publication database](https://publications.cispa.saarland/3119/) or use the following bibtex entry:
+
+```
+@inproceedings{SENG2020,
+    author = {Fabian Schwarz and Christian Rossow},
+    title = {{SENG, the SGX-Enforcing Network Gateway: Authorizing Communication from Shielded Clients}},
+    booktitle = {29th {USENIX} Security Symposium ({USENIX} Security 20)},
+    year = {2020},
+    address = {Boston, MA},
+    publisher = {{USENIX} Association},
+    month = aug,
+    url = {https://publications.cispa.saarland/3119/}
+}
+```
+
 ## Server Preparation
 0. follow the [SENG Server](https://github.com/sengsgx/sengsgx/tree/master/seng_server#build) instructions for preparing SENG, plus the tunnel interface and firewall
 
@@ -47,7 +65,7 @@ and then re-build the sgx-ra-tls libraries, the SENG Runtime and the SENG SDK.
 Ensure that the SENG Runtime and SENG SDK pin the SENG Go-Server instead of the SENG Server certificate.
 
 
-## Run
+## Running the Server
 ```
 go run ./sengsrv [options] <tunnel_ipv4> <tunnel_port>
 
@@ -74,11 +92,12 @@ go run ./sengsrv/ -cert ./gosrv_cert.pem -key ./gosrv_key.pem -db ./demo_sqlite3
 ```
 
 ## Limitations
-The SENG Go-Server prototype does not yet support the following features of the SENG Server:
+The SENG Go-Server prototype does not yet support the following features of the [SENG Server](https://github.com/sengsgx/sengsgx/tree/master/seng_server):
 * SENG Netfilter Extension support
 * Automatic Port Shadowing (unlikely to be added)
-* a clean, graceful shutdown process and timeouts for established application tunnels
+* a clean, graceful shutdown process
 
-Furhter limitations:
+Further limitations:
 * Tests are rudimentary / just serve as placeholders
 * SGX certificate checks currently consider any certificate of the chain, not only the leaf certificate
+* Missing timeouts for established application tunnels
