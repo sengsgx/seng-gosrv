@@ -1,7 +1,7 @@
 # SENG Go-Server
 This is a multi-threaded rewrite of the [SENG Server](https://github.com/sengsgx/sengsgx/tree/master/seng_server) in Go.
 The SENG Go-Server is meant to scale better for high numbers of connected SENG Runtime/SDK clients.
-It is based on the [pion DTLS](https://github.com/pion/dtls) library and currently only supports ECDSA server and client certificates.
+It is based on the [pion DTLS](https://github.com/pion/dtls) and [water TUN/TAP](https://github.com/songgao/water) libraries and currently only supports ECDSA server and client certificates.
 The SGX certificate extensions and attestation checks have been reimplemented by us in native Go.
 Note that not all features have been ported yet.
 The SENG Go-Server currently uses the `ECDHE-ECDSA-AES128-GCM-SHA256` cipher suite and is compatible with the SENG Runtime and the SENG SDK (with ECDSA enabled).
