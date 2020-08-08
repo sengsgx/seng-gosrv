@@ -77,6 +77,8 @@ go run ./sengsrv/ -cert ./gosrv_cert.pem -key ./gosrv_key.pem -db ./demo_sqlite3
 The SENG Go-Server prototype does not yet support the following features of the SENG Server:
 * SENG Netfilter Extension support
 * Automatic Port Shadowing (unlikely to be added)
-* Missing a clean, graceful shutdown process and timeouts for established application tunnels
+* a clean, graceful shutdown process and timeouts for established application tunnels
+
+Furhter limitations:
 * Tests are rudimentary / just serve as placeholders
 * SGX certificate checks currently consider any certificate of the chain, not only the leaf certificate
